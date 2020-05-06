@@ -195,7 +195,8 @@ document
     if (event.charCode === 13) {
       // WHEN USER PRESSES ENTER, FIND MATCHING BUSINESS
       const foundAgent = businesses.find((business) =>
-        business.purchasingAgent.nameFirst.includes(event.target.value)
+        business.purchasingAgent.nameFirst.includes(event.target.value) ||
+        business.purchasingAgent.nameLast.includes(event.target.value)
       );
 
       outEl.innerHTML = `
