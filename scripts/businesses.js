@@ -112,7 +112,7 @@ const businesses = [
   ];
 
 const outEl = document.querySelector("#output")
-outEl.innerHTML = "<h1>Active Businesses</h1>"
+outEl.innerHTML += "<h1>Active Businesses</h1>"
 
 businesses.forEach(business => {
   outEl.innerHTML += `
@@ -126,3 +126,34 @@ businesses.forEach(business => {
   `
   outEl.innerHTML += "<hr/>"
 });
+
+// Array to contain all the New York businesses
+const newYorkBusinesses = businesses.filter(business => {
+    let inNewYork = false
+  
+    if (business.addressStateCode === "NY") {
+        inNewYork = true
+    }
+    return inNewYork
+  })
+
+  console.log(newYorkBusinesses)
+
+const manufacturingBusinesses = businesses.filter(business => business.companyIndustry === "Manufacturing")
+
+console.log(manufacturingBusinesses)
+
+outEl.innerHTML += "<h1>Manufacturing Businesses</h1>"
+
+manufacturingBusinesses.forEach(manufacturingBusinesses => {
+    outEl.innerHTML += `
+    <h2>${manufacturingBusinesses.companyName}</h2>
+    <section>
+      ${manufacturingBusinesses.addressFullStreet}
+    </section>
+    <section>
+      ${manufacturingBusinesses.addressCity}, ${manufacturingBusinesses["addressStateCode"]} ${manufacturingBusinesses["addressZipCode"]}
+    </section>
+  `
+  outEl.innerHTML += "<hr/>"
+})
